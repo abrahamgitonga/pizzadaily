@@ -4,6 +4,7 @@
 <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
     <a class="navbar-brand">Welcome {{username}}</a>
+    <a class="nav-item" style="text-decoration: none; color: black;" href="/usersorders/">my orders</a>
     <a class="btn btn-danger" href="/userlogout/">logout</a>
     
 </nav>
@@ -23,7 +24,7 @@
             <tr>
                 <td>{{pizza.name}}</td>
                 <td>{{pizza.price}}</td>
-                <td><input type="number" name="{{pizza.id}}" style="width: 60px;" name="quantity"></td>
+                <td><input type="number" value="0" min="0" name="{{pizza.id}}" style="width: 60px;" name="quantity"></td>
             </tr>
             {% endfor %}
         </table>

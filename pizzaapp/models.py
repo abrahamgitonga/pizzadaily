@@ -14,4 +14,5 @@ class orderModel(models.Model):
     username = models.CharField(max_length=10)
     telephone = models.CharField(max_length=10)
     address = models.CharField(max_length=10)
-    ordereditems = models.CharField(max_length=10)   
+    ordereditems = models.CharField(max_length=10) 
+    status = models.CharField(max_length=10)   

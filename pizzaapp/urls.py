@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 from django.urls import path
-from .views import placeorder,adminloginview,adminhomepageview,authenticateadmin, customerwelcomeview, logoutadmin,addpizza,deletepizza,homepageview,signupuser, userauthenticate, userloginview, userlogout
+from .views import placeorder,adminloginview,adminhomepageview,authenticateadmin, customerwelcomeview, logoutadmin,addpizza,deletepizza,homepageview,signupuser, userauthenticate, userloginview, userlogout,usersorders
 urlpatterns = [
     path('admin/', adminloginview,name = 'adminloginpage'),
     path('adminauthenticate/',authenticateadmin),
@@ -15,7 +15,8 @@ urlpatterns = [
     path('customer/welcome/',customerwelcomeview, name= 'customerpage'),
     path('customer/authenticate/',userauthenticate),
     path('userlogout/',userlogout),
-    path('placeorder/',placeorder)
+    path('placeorder/',placeorder),
+    path('usersorders/',usersorders)
 
 
 ]
