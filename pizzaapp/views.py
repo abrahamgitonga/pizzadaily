@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
-from .models import pizzaModel,customerModel
+from .models import pizzaModel,customerModel,orderModel
 from django.contrib.auth.models import User 
 # Create your views here.
 def adminloginview(request):
@@ -88,13 +88,35 @@ def userauthenticate(request):
 
 def customerwelcomeview(request):
     username = request.user.username
-    context = {'username': username}
+    context = {'username': username,'pizzas': pizzaModel.objects.all()}
     return render(request,'pizzaapp/customerpage.html',context)
 
 def userlogout(request):
     logout(request)
     return redirect('userloginpage')
 
+def placeorder(request):
+    username = request.user.username
+    telephone = customerModel.objects.filter(userid = request.user.id)[0].telephone
+    address = request.POST['address']
+    ordereditems = ""
 
+    for pizza in pizzaModel.objects.all():
+        pizzaid = pizza.id
+        name = pizza.name
+        price = pizza.price
+        quantity = request.POST.get(str(pizzaid)," ")
+        if str(quantity)!="0" and str(quantity)!="":
+
+            ordereditems = ordereditems + name +" " + price + "quantity : " + quantity + "  "
+
+    orderModel(username = username,telephone = telephone,address = address,ordereditems = ordereditems).save()
+    messages.add_message(request,messages.ERROR,"order placement success")
+    return redirect('customerpage')
+
+
+
+
+    
 
 

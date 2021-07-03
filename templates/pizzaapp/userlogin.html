@@ -2,7 +2,7 @@
 {% block content %}
 <div style="padding: 20px;width: 300px;background-color:rgb(219, 159, 80);display: block;margin: auto;margin-top: 200px;">
 <h1 style="text-align: center;color: white;">login</h1>
-    <form method="post" action="/customer/authenticate/">
+    <form method="POST" action="/customer/authenticate/">
         {% csrf_token %}
         <input type="text" style="margin-bottom: 15px;" class="form-control" name="username" placeholder="username">
         <input type="password" class="form-control" name="password" placeholder="password">

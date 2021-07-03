@@ -9,4 +9,9 @@ class pizzaModel(models.Model):
 class customerModel(models.Model):
     userid = models.CharField(max_length=10)
     telephone = models.CharField(max_length=10)
-    
+
+class orderModel(models.Model):
+    username = models.CharField(max_length=10)
+    telephone = models.CharField(max_length=10)
+    address = models.CharField(max_length=10)
+    ordereditems = models.CharField(max_length=10)   

@@ -7,5 +7,28 @@
     <a class="btn btn-danger" href="/userlogout/">logout</a>
     
 </nav>
-
+{% for message in messages %}
+<p style="color: green;text-align: center;">{{message}}</p>
+{% endfor %}
+<form method="POST" action="/placeorder/">
+    {% csrf_token %}
+    <div class="container" style="width: 600px;margin: auto;">
+        <table style="width: 100%;">
+            <tr>
+                <th>Pizza</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+            {% for pizza in pizzas %}
+            <tr>
+                <td>{{pizza.name}}</td>
+                <td>{{pizza.price}}</td>
+                <td><input type="number" name="{{pizza.id}}" style="width: 60px;" name="quantity"></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <input type="text" placeholder="address" style="width: 400px; margin-top: 110px;" name="address">
+        <input type="submit" style="float: right;margin-top: 100px;" class="btn btn-outline-success" value="place order" name="">
+    </div>
+</form>
 {% endblock %}
