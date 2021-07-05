@@ -123,8 +123,23 @@ def usersorders(request):
     context = {'orders' : orders}
     return render(request,'pizzaapp/usersorders.html',context)
 
+def adminorders(request):
+    orders = orderModel.objects.all()
+    context = {'orders' : orders}
+    return render(request,'pizzaapp/adminorders.html',context)
 
+def acceptorder(request,orderpk):
+    order = orderModel.objects.filter(id = orderpk)[0]
+    order.status ="accepted"
+    order.save()
+    return redirect(request.META['HTTP_REFERER']) 
 
     
 
+def declineorder(request,orderpk):
+    order = orderModel.objects.filter(id = orderpk)[0]
+    order.status ="declined"
+    order.save()
+    return redirect(request.META['HTTP_REFERER']) 
 
+    
